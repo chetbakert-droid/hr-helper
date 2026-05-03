@@ -15,6 +15,7 @@
    npm install
    ```
 
+
 2. **設定環境變數:**
    複製 `.env.example` 並重新命名為 `.env.local`，接著填寫你的 Gemini API 金鑰：
    ```env
