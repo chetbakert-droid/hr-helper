@@ -1,0 +1,6 @@
+{
+  "name": "HR 精算工具箱",
+  "description": "专业的HR辅助工具，支持CSV名单上传、随机抽奖及一键自动分组，提升行政效率。",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
