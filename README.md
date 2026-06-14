@@ -4,7 +4,7 @@
 
 # HR Helper App
 
-這個專案是一個基於 React (Vite) + Tailwind CSS 開發的應用程式，並整合了 Google Gemini API。
+這個專案是一個基於 React (Vite) + Tailwind CSS 開發的純前端應用程式，用於名單抽籤與自動分組。所有運算皆在瀏覽器本機完成，不呼叫任何外部 API、也不需要 API 金鑰。
 
 ## 🚀 本地端運行 (Run Locally)
 
@@ -15,14 +15,7 @@
    npm install
    ```
 
-
-2. **設定環境變數:**
-   複製 `.env.example` 並重新命名為 `.env.local`，接著填寫你的 Gemini API 金鑰：
-   ```env
-   GEMINI_API_KEY=your_api_key_here
-   ```
-
-3. **啟動開發伺服器:**
+2. **啟動開發伺服器:**
    ```bash
    npm run dev
    ```
@@ -32,10 +25,12 @@
 
 ### GitHub Actions 自動部署
 本專案已設定 `.github/workflows/deploy.yml`，當你將程式碼推送到 `main` 分支時，將會自動部署到 **GitHub Pages**。
-> **注意：** 請務必至 GitHub Repository 的 `Settings -> Pages` 將 Source 設為 `GitHub Actions`，並且若部署時需要使用到 API Key，請在 `Settings -> Secrets and variables -> Actions` 中新增 `GEMINI_API_KEY`。
+> **注意：** 請務必至 GitHub Repository 的 `Settings -> Pages` 將 Source 設為 `GitHub Actions`。本專案不需要任何 API 金鑰或 Secret。
+>
+> ⚠️ 安全提醒：若未來要加入需要金鑰的功能，請透過後端（例如 Supabase Edge Function）代理呼叫，**切勿**用 Vite 的 `define` 把金鑰注入前端 bundle，否則會在公開網站上外洩。
 
 ### 版控設定 (.gitignore)
-為了保護隱私檔案（如 API 金鑰）並節省空間，專案根目錄的 `.gitignore` 已設定排除：
+為了保護隱私檔案並節省空間，專案根目錄的 `.gitignore` 已設定排除：
 - `node_modules/`、`dist/`：無須上傳的依賴與編譯後檔案。
 - `.env*`：排除所有環境變數檔案，避免金鑰外洩（僅保留 `.env.example` 供參考）。
 - `.DS_Store`、`.vscode/` 等編輯器/系統暫存檔。
